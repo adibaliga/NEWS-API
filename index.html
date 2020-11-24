@@ -20,7 +20,7 @@
         <ul class="news-list">
         </ul>
     </div>
-    <script type='text/javascript' src='config.js'></script>
+
     <script>
         const searchForm = document.querySelector('.search');
         const input = document.querySelector('.input');
@@ -35,7 +35,7 @@
             }
             newsList.innerHTML = '';
             e.preventDefault()
-            const apiKey = config.APIKEY;
+            const apiKey = 'a575441a41df4717a50c000cf444fc83';
             let topic = input.value;
             let url = `https://newsapi.org/v2/everything?q=${topic}&apiKey=${apiKey}`
             fetch(url).then((res) => {
