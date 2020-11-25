@@ -43,12 +43,54 @@
                 }).then((data) => {
                     console.log(data)
                     data.articles.forEach(article => {
+                        let img = document.createElement('img');
+                        let p = document.createElement('p');
+                        let p1 = document.createElement('p');
                         let li = document.createElement('li')
                         let a = document.createElement('a');
+                        img.setAttribute('src', article.urlToImage);
+                        date = new Date(article.publishedAt);
+                        year = date.getFullYear();
+                        month = date.getMonth() + 1;
+                        dt = date.getDate();
+                        hr = date.getHours();
+                        min = date.getMinutes();
+                        sec = date.getSeconds();
+                        let amPm;
+
+                        if (dt < 10) {
+                            dt = '0' + dt;
+                        }
+                        if (month < 10) {
+                            month = '0' + month;
+                        }
+                        if (hr > 12) {
+                            amPm = "pm";
+                        } else {
+                            amPm = "am";
+                        }
+                        if (hr > 12) {
+                            hr %= 12;
+                        }
+                        if (hr < 10) {
+                            hr = '0' + hr;
+                        }
+                        if (min < 10) {
+                            min = '0' + min;
+                        }
+                        if (sec < 10) {
+                            sec = '0' + sec;
+                        }
+                        p.innerHTML = "<b>Author Name: </b>" + article.author + " <b>Published at </b>" + dt + "-" + month + "-" + year + " " + hr + ":" + min + ":" + sec + " " + amPm;
+                        p1.textContent = article.description;
                         a.setAttribute('href', article.url)
                         a.setAttribute('target', '_blank');
                         a.textContent = article.title;
+                        a.setAttribute('title', article.title);
+                        li.appendChild(img);
                         li.appendChild(a);
+                        li.appendChild(p);
+                        li.appendChild(p1);
                         newsList.appendChild(li)
                     })
                 }).catch((error) => {

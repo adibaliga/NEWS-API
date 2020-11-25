@@ -16,3 +16,16 @@
     top: 40%;
     left: 10%;
 }
+
+.container img {
+    width: 10%;
+    height: 10%;
+}
+
+.container a {
+    padding-left: 25px;
+}
+
+.container p {
+    padding-left: 10%;
+}
