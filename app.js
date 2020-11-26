@@ -14,7 +14,7 @@ button.addEventListener('click', function(name) {
         alert('enter city name');
         return
     }
-    fetch('https://api.openweathermap.org/data/2.5/weather?q=' + input.value + '&appid=ea3fd139eef32462a164d59a73ea0fd1')
+    fetch('https://api.openweathermap.org/data/2.5/weather?q=' + input.value + '&appid=' + config.APIKEY)
         .then(response => response.json())
         .then(data => {
             console.log(data);

@@ -4,101 +4,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ==" crossorigin="anonymous" />
-    <link rel="stylesheet" href="style.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>OpenWeatherMap Api</title>
+    <link rel="stylesheet" href="weather.css">
 </head>
 
 <body>
-    <form action="" class="search">
-        <label for="">News</label>
-        <input type="text" class="input"><br>
-        <input type="submit">
+    <!-- <div class="main">
+    <div class="header">
+      <h1>OpenWeatherMap API</h1>
+      <p>Enter any city name in the input box below to get the data</p>
+    </div> -->
 
-    </form>
-    <div class="container">
-        <ul class="news-list">
-        </ul>
+    <div class="input">
+        <input type="text" placeholder="Enter the city" class="input_text">
+        <input type="submit" value="Submit" class="submit">
+    </div>
     </div>
 
-    <script>
-        const searchForm = document.querySelector('.search');
-        const input = document.querySelector('.input');
-        const newsList = document.querySelector('.news-list');
+    <div class="container">
+        <div class="card">
+            <h1 class="name" id="name"></h1>
+            <p class="temp"></p>
+            <p class="sunrise"></p>
+            <p class="sunset"></p>
+            <p class="clouds"></p>
+            <p class="desc"></p>
 
-        searchForm.addEventListener('submit', retrive)
-
-        function retrive(e) {
-            if (input.value == '') {
-                alert("Input field is empty");
-                return
-            }
-            newsList.innerHTML = '';
-            e.preventDefault()
-            const apiKey = 'a575441a41df4717a50c000cf444fc83';
-            let topic = input.value;
-            let url = `https://newsapi.org/v2/everything?q=${topic}&apiKey=${apiKey}`
-            fetch(url).then((res) => {
-                    return res.json()
-                }).then((data) => {
-                    console.log(data)
-                    data.articles.forEach(article => {
-                        let img = document.createElement('img');
-                        let p = document.createElement('p');
-                        let p1 = document.createElement('p');
-                        let li = document.createElement('li')
-                        let a = document.createElement('a');
-                        img.setAttribute('src', article.urlToImage);
-                        date = new Date(article.publishedAt);
-                        year = date.getFullYear();
-                        month = date.getMonth() + 1;
-                        dt = date.getDate();
-                        hr = date.getHours();
-                        min = date.getMinutes();
-                        sec = date.getSeconds();
-                        let amPm;
-
-                        if (dt < 10) {
-                            dt = '0' + dt;
-                        }
-                        if (month < 10) {
-                            month = '0' + month;
-                        }
-                        if (hr > 12) {
-                            amPm = "pm";
-                        } else {
-                            amPm = "am";
-                        }
-                        if (hr > 12) {
-                            hr %= 12;
-                        }
-                        if (hr < 10) {
-                            hr = '0' + hr;
-                        }
-                        if (min < 10) {
-                            min = '0' + min;
-                        }
-                        if (sec < 10) {
-                            sec = '0' + sec;
-                        }
-                        p.innerHTML = "<b>Author Name: </b>" + article.author + " <b>Published at </b>" + dt + "-" + month + "-" + year + " " + hr + ":" + min + ":" + sec + " " + amPm;
-                        p1.textContent = article.description;
-                        a.setAttribute('href', article.url)
-                        a.setAttribute('target', '_blank');
-                        a.textContent = article.title;
-                        a.setAttribute('title', article.title);
-                        li.appendChild(img);
-                        li.appendChild(a);
-                        li.appendChild(p);
-                        li.appendChild(p1);
-                        newsList.appendChild(li)
-                    })
-                }).catch((error) => {
-                    console.log(error);
-                })
-                // console.log(topic);
-        }
-    </script>
+            <img alt="" class="img">
+        </div>
+    </div>
+    <script src='config.js'></script>
+    <script src="app.js"></script>
 </body>
 
 </html>
