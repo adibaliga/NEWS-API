@@ -5,10 +5,22 @@
     list-style: none;
 }
 
+label {
+    color: #fff;
+}
+
+body {
+    background-color: #000;
+}
+
 .search {
     position: absolute;
     top: 10%;
     left: 10%;
+}
+
+.search input[type='submit'] {
+    color: #fff;
 }
 
 .container {
@@ -18,14 +30,25 @@
 }
 
 .container img {
-    width: 10%;
+    width: 15%;
     height: 10%;
 }
 
 .container a {
     padding-left: 25px;
+    font-size: 20px;
 }
 
 .container p {
-    padding-left: 10%;
+    padding-top: 1%;
+}
+
+.container .news-list li {
+    background-color: #dbf6e9;
+    padding: 3%;
+}
+
+.container .news-list li .article {
+    font-weight: bold;
+    color: #9d0191;
 }
